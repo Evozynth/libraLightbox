@@ -73,6 +73,7 @@
 				
 				// Display overlay
 				$('<div id="overlay"></div>')
+					.attr('class', 'loading')
 					.css('opacity', '0')
 					.animate({'opacity': options.overlayOpacity}, options.lightboxFadeIn)
 					.appendTo('body');
@@ -160,7 +161,7 @@
 						.fadeIn(options.imageFadeIn);
 						
 						// Remove loader image from overlay background
-						$('#overlay').css('background-image', 'none');
+						$('#overlay').attr('class', 'loaded');
 						
 						
 						
@@ -238,7 +239,7 @@
 		function removeImage(callback) {
 			$('#lightbox').fadeOut(options.imageFadeOut, function() {
 				$(this).remove();
-				$('#overlay').css('background', 'black url("ajax-loader.gif") no-repeat center center')
+				$('#overlay').attr('class', 'loading');
 				callback();
 			});
 		}
